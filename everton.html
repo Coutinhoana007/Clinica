@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login e Cadastro - Clínica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-image: scr('clinica.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.9); /* Fundo semi-transparente */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 1rem;
+        }
+        label, select, input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .toggle-btn {
+            margin-top: 20px;
+            color: #007BFF;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="login-container">
+    <h2>Bem-vindo à Clínica</h2>
+    <label for="user-type">Selecione o tipo de usuário:</label>
+    <select id="user-type">
+        <option value="paciente">Sou Paciente</option>
+        <option value="funcionario">Sou Funcionário</option>
+    </select>
+    
+    <input type="text" id="username" placeholder="Nome de usuário">
+    <input type="password" id="password" placeholder="Senha">
+    <button onclick="login()">Entrar</button>
+    
+    <div class="toggle-btn" onclick="showRegister()">Não tem uma conta? Cadastre-se</div>
+</div>
+
+<div class="container" id="register-container" style="display: none;">
+    <h2>Cadastro de Paciente</h2>
+    <input type="text" id="register-username" placeholder="Nome de usuário">
+    <input type="password" id="register-password" placeholder="Senha">
+    
+    <label for="specialty">Selecione a especialidade do médico:</label>
+    <select id="specialty">
+        <option value="cardiologia">Cardiologia</option>
+        <option value="dermatologia">Dermatologia</option>
+        <option value="pediatria">Pediatria</option>
+        <option value="ortopedia">Ortopedia</option>
+    </select>
+    
+    <button onclick="register()">Cadastrar</button>
+    
+    <div class="toggle-btn" onclick="showLogin()">Já tem uma conta? Faça login</div>
+</div>
+
+<script>
+    function showRegister() {
+        document.getElementById('login-container').style.display = 'none';
+        document.getElementById('register-container').style.display = 'block';
+    }
+
+    function showLogin() {
+        document.getElementById('login-container').style.display = 'block';
+        document.getElementById('register-container').style.display = 'none';
+    }
+
+    function login() {
+        const userType = document.getElementById('user-type').value;
+        
+        if (userType === "paciente") {
+            window.location.href = "consultas.html";
+        } else if (userType === "funcionario") {
+            window.location.href = "prontuario.html";
+        }
+    }
+
+    function register() {
+        alert("Cadastro realizado com sucesso!");
+        showLogin();
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultas e Convênios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5;
+        }
+        .container {
+            width: 100%;
+            max-width: 500px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        .tab {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            background-color: #e0e0e0;
+            border-radius: 4px 4px 0 0;
+        }
+        .tab.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Consultas e Convênios</h2>
+    
+    <!-- Abas para alternar entre Consultas e Convênios -->
+    <div class="tabs">
+        <div class="tab active" onclick="showTab('consultas')">Consultas</div>
+        <div class="tab" onclick="showTab('convenios')">Convênios</div>
+    </div>
+    
+    <!-- Conteúdo da aba Consultas -->
+    <div id="consultas" class="tab-content active">
+        <ul>
+            <li>Consulta com Dr. João - Cardiologia - 12/11/2024</li>
+            <li>Consulta com Dra. Maria - Dermatologia - 18/11/2024</li>
+            <!-- Adicione mais consultas conforme necessário -->
+        </ul>
+    </div>
+    
+    <!-- Conteúdo da aba Convênios -->
+    <div id="convenios" class="tab-content">
+        <ul>
+            <li>Convênio ABC Saúde</li>
+            <li>Convênio Vida e Saúde</li>
+            <li>Convênio Saúde para Todos</li>
+            <!-- Adicione mais convênios conforme necessário -->
+        </ul>
+    </div>
+</div>
+
+<script>
+    // Função para alternar entre as abas de Consultas e Convênios
+    function showTab(tabName) {
+        const tabs = document.querySelectorAll('.tab');
+        const contents = document.querySelectorAll('.tab-content');
+
+        // Remover a classe ativa de todas as abas e conteúdos
+        tabs.forEach(tab => tab.classList.remove('active'));
+        contents.forEach(content => content.classList.remove('active'));
+
+        // Adicionar a classe ativa para a aba e o conteúdo selecionados
+        document.querySelector(`.tab[onclick="showTab('${tabName}')"]`).classList.add('active');
+        document.getElementById(tabName).classList.add('active');
+    }
+</script>
+
+</body>
+</html>
